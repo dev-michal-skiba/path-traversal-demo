@@ -1,0 +1,37 @@
+version: '3.9'
+
+services:
+  path_traversal_db:
+    image: postgres:14.0
+    container_name: path_traversal_db
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${PATH_TRAVERSAL_DB_NAME:-postgres}
+      - POSTGRES_USER=${PATH_TRAVERSAL_DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${PATH_TRAVERSAL_DB_PASSWORD:-postgres}
+    healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U postgres"]
+        interval: 1s
+        timeout: 1s
+        retries: 5
+  path_traversal_backend:
+    image: path_traversal_backend
+    container_name: path_traversal_backend
+    environment:
+      - PATH_TRAVERSAL_SECRET_KEY=${PATH_TRAVERSAL_SECRET_KEY:-insecure-secret-key}
+      - PATH_TRAVERSAL_DEBUG=${PATH_TRAVERSAL_DEBUG:-true}
+      - PATH_TRAVERSAL_DB_NAME=${PATH_TRAVERSAL_DB_NAME:-postgres}
+      - PATH_TRAVERSAL_DB_USER=${PATH_TRAVERSAL_DB_USER:-postgres}
+      - PATH_TRAVERSAL_DB_PASSWORD=${PATH_TRAVERSAL_DB_PASSWORD:-postgres}
+      - PATH_TRAVERSAL_DB_HOST=${PATH_TRAVERSAL_DB_HOST:-path_traversal_db}
+      - PATH_TRAVERSAL_DB_PORT=${PATH_TRAVERSAL_DB_PORT:-5432}
+    volumes:
+      - ./path_traversal:/code
+    ports:
+      - '8000:8000'
+    command: bash -c 'python manage.py migrate &&
+                      python manage.py runserver 0.0.0.0:8000'
+    depends_on:
+      path_traversal_db:
+        condition: service_healthy
