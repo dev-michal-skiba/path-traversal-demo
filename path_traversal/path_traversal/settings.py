@@ -20,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: set secure secret key for production
-SECRET_KEY = os.getenv('PATH_TRAVERSAL_SECRET_KEY', 'insecure-secret-key')
+SECRET_KEY = os.getenv('SECRET_KEY', 'insecure-secret-key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('PATH_TRAVERSAL_DEBUG', 'true').lower() in ['1', 'true']
+DEBUG = os.getenv('DEBUG', 'true').lower() in ['1', 'true']
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
@@ -76,11 +76,11 @@ WSGI_APPLICATION = 'path_traversal.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('PATH_TRAVERSAL_DB_NAME'),
-        'USER': os.getenv('PATH_TRAVERSAL_DB_USER'),
-        'PASSWORD': os.getenv('PATH_TRAVERSAL_DB_PASSWORD'),
-        'HOST': os.getenv('PATH_TRAVERSAL_DB_HOST'),
-        'PORT': os.getenv('PATH_TRAVERSAL_DB_PORT'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
 

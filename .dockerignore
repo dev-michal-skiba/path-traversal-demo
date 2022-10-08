@@ -9,7 +9,3 @@ venv/
 data/
 # SFTP server volume
 upload/
-# Local environment variables
-.env
-# SSH keys
-ssh/id_rsa_key*
