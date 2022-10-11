@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="{% static "style.css" %}" rel="stylesheet"/>
+    <title>Path Traversal Demo</title>
+</head>
+<body>
+    {% if logged_in %}
+        <ul class="navbar">
+          <li class="navbar-element">
+              <a class="navbar-link" href="/dashboard">Dashboard</a>
+          </li>
+          <li class="navbar-element navbar-right">
+              <a class="navbar-link" href="/logout">Logout</a>
+          </li>
+        </ul>
+    {% else %}
+        <ul class="navbar">
+          <li class="navbar-element">
+              <a class="navbar-link" href="/">Home</a>
+          </li>
+          <li class="navbar-element navbar-right">
+              <a class="navbar-link" href="/login">Log In</a>
+          </li>
+          <li class="navbar-element navbar-right">
+              <a class="navbar-link" href="/register">Register</a>
+          </li>
+        </ul>
+    {% endif %}
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

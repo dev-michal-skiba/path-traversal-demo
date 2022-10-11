@@ -1,0 +1,59 @@
+body {
+    background-color: #e5fafa;
+}
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #228CDB;
+}
+
+.navbar-element {
+    float: left;
+}
+.navbar-link {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar-link:hover:not(.active) {
+    background-color: #111D4A;
+}
+
+.navbar-right {
+    float: right;
+}
+
+form > * {
+    margin: 10px;
+}
+
+.home-container {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size:xx-large;
+}
+
+.form-container {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
