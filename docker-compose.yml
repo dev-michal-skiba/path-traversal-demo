@@ -29,6 +29,8 @@ services:
     container_name: path_traversal_backend
     environment:
       - SECRET_KEY=${SECRET_KEY:-insecure-secret-key}
+      - SFTP_SALT=${SFTP_SALT:-insecure-sftp-salt}
+      - SFTP_SECRET=${SFTP_SECRET:-insecure-sftp-secret}
       - DEBUG=${DEBUG:-true}
       - DB_NAME=${DB_NAME:-postgres}
       - DB_USER=${DB_USER:-postgres}

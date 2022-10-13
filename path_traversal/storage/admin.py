@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from storage.forms import SFTPCredentialsForm
+from storage.models import SFTPCredentials
+
+
+@admin.register(SFTPCredentials)
+class SFTPSettingsAdmin(admin.ModelAdmin):
+    form = SFTPCredentialsForm

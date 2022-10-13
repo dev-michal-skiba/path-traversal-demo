@@ -21,6 +21,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: set secure secret key for production
 SECRET_KEY = os.getenv('SECRET_KEY', 'insecure-secret-key')
+SFTP_SALT = str.encode(os.getenv('SFTP_SALT', 'insecure-sftp-salt'))
+SFTP_SECRET = str.encode(os.getenv('SFTP_SECRET', 'insecure-sftp-secret'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'true').lower() in ['1', 'true']

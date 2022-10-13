@@ -1,0 +1,5 @@
+#!/bin/sh
+
+private_key=`cat ssh/id_rsa_key`
+docker exec -it path_traversal_backend python manage.py load_private_key --private-key "$private_key"
+rm ssh/id_rsa_key
