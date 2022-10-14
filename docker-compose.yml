@@ -5,11 +5,11 @@ services:
     image: atmoz/sftp
     container_name: path_traversal_sftp
     volumes:
-      - ./ssh/id_rsa_key.pub:/home/${SFTP_USER:-sftp-user}/.ssh/keys/id_rsa_key.pub:ro
-      - ./upload:/home/${SFTP_USER:-sftp-user}/upload
+      - ./ssh/id_rsa_key.pub:/home/${SFTP_USERNAME:-sftp-user}/.ssh/keys/id_rsa_key.pub:ro
+      - ./upload:/home/${SFTP_USERNAME:-sftp-user}/upload
     ports:
       - "2222:22"
-    command: ${SFTP_USER:-sftp-user}::1001
+    command: ${SFTP_USERNAME:-sftp-user}::1001
   path_traversal_db:
     image: postgres:14.0
     container_name: path_traversal_db
@@ -37,6 +37,10 @@ services:
       - DB_PASSWORD=${DB_PASSWORD:-postgres}
       - DB_HOST=${DB_HOST:-path_traversal_db}
       - DB_PORT=${DB_PORT:-5432}
+      - SFTP_BASE_DIR=${SFTP_BASE_DIR:-/upload/}
+      - SFTP_HOSTNAME=${SFTP_HOSTNAME:-path_traversal_sftp}
+      - SFTP_PORT=${SFTP_PORT:-22}
+      - SFTP_USERNAME=${SFTP_USERNAME:-sftp-user}
     volumes:
       - ./path_traversal:/code
     ports:

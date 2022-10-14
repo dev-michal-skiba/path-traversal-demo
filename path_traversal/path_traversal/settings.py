@@ -138,3 +138,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 HOME_URL = '/'
 DASHBOARD_URL = '/dashboard'
+
+SFTP_BASE_DIR = os.getenv('SFTP_BASE_DIR')
+SFTP_HOSTNAME = os.getenv('SFTP_HOSTNAME')
+SFTP_PORT = os.getenv('SFTP_PORT')
+SFTP_USERNAME = os.getenv('SFTP_USERNAME')
