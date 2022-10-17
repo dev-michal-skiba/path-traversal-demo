@@ -1,7 +1,7 @@
 from django import forms
 
 from storage.encryptor import Encryptor
-from storage.models import SFTPCredentials
+from storage.models import SFTPCredentials, SFTPFile
 
 
 class SFTPCredentialsForm(forms.ModelForm):
@@ -27,3 +27,13 @@ class SFTPCredentialsForm(forms.ModelForm):
             encryptor = Encryptor()
             return encryptor.encrypt(private_key)
         return private_key
+
+
+class FileForm(forms.ModelForm):
+    class Meta:
+        model = SFTPFile
+        fields = ('month', 'year')
+
+    def save(self, user):
+        self.instance.user = user
+        super(FileForm, self).save()

@@ -1,0 +1,2 @@
+sudo chgrp 100 upload/
+sudo chmod g+rw upload/

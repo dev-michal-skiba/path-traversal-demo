@@ -1,5 +1,28 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
-    <h3>Dashboard</h3>
+<div class="files-table-container">
+    <table>
+        <tr>
+            <th>Invoices</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for filename in filenames %}
+            <tr>
+                <td class="filename-td">{{filename}}</td>
+                <td class="button-td"><a href="{% url 'download-safe' %}?filename={{filename}}" target="_blank" rel="noopener noreferrer"><button>Open (safe)</button></a></td>
+                <td class="button-td"><a href="{% url 'download-unsafe' %}?filename={{filename}}" target="_blank" rel="noopener noreferrer"><button>Open (unsafe)</button></a></td>
+            </tr>
+        {% endfor %}
+        </table>
+</div>
+<div class="mock-invoice-form-container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+    <button class="form-button" type="submit">Create Mock Invoice</button>
+</form>
+</div>
 {% endblock %}

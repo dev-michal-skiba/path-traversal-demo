@@ -57,3 +57,41 @@ form > * {
     right: 0;
     margin: auto;
 }
+
+.mock-invoice-form-container {
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #292929;
+    text-align: left;
+    padding: 8px;
+}
+
+.filename-td {
+    width: 70vw;
+}
+
+.button-td {
+    width: 15vw;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #a8e4fc;
+}
+
+.files-table-container {
+    margin: 20px;
+}
