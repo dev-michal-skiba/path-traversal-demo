@@ -1,0 +1,236 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$IlIiEAZzAe7k13s5DpQNSW$5u+1S4sEjHH2lccnM2Bps3KZTfcXrl2kGdCMbnv+4Zc=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "admin@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2022-10-10T14:11:18.006Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$DISRinDos6SrX9k9Sfp69t$MTz47CS3xyXmY6GJbTeE1y1421gL+IOD8aZO9wu8Hps=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "victim_company",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-10-18T18:44:15Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$390000$c8uCXp82ZqKQsvCexhK5Lz$SNpcjnvrt+rlmVvMMQR91fLTK5CtBh5GOF+D7LQWJDc=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "hacker_company",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2022-10-18T18:44:27Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "month": 1,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 2,
+    "fields": {
+      "user": 2,
+      "month": 2,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "month": 3,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 4,
+    "fields": {
+      "user": 2,
+      "month": 4,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 5,
+    "fields": {
+      "user": 2,
+      "month": 5,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 6,
+    "fields": {
+      "user": 2,
+      "month": 6,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 7,
+    "fields": {
+      "user": 2,
+      "month": 7,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 8,
+    "fields": {
+      "user": 2,
+      "month": 8,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 9,
+    "fields": {
+      "user": 2,
+      "month": 9,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 10,
+    "fields": {
+      "user": 2,
+      "month": 10,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 11,
+    "fields": {
+      "user": 3,
+      "month": 1,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 12,
+    "fields": {
+      "user": 3,
+      "month": 2,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 13,
+    "fields": {
+      "user": 3,
+      "month": 3,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 14,
+    "fields": {
+      "user": 3,
+      "month": 4,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 15,
+    "fields": {
+      "user": 3,
+      "month": 5,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 16,
+    "fields": {
+      "user": 3,
+      "month": 6,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 17,
+    "fields": {
+      "user": 3,
+      "month": 7,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 18,
+    "fields": {
+      "user": 3,
+      "month": 8,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 19,
+    "fields": {
+      "user": 3,
+      "month": 9,
+      "year": 2022
+    }
+  },
+  {
+    "model": "storage.sftpfile",
+    "pk": 20,
+    "fields": {
+      "user": 3,
+      "month": 10,
+      "year": 2022
+    }
+  }
+]
