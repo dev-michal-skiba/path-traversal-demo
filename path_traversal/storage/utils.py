@@ -1,5 +1,5 @@
 from io import BytesIO, StringIO
-from os.path import basename, dirname, isabs
+from os.path import dirname, relpath
 
 import paramiko
 from django.conf import settings
@@ -8,18 +8,19 @@ from reportlab.pdfgen import canvas
 from storage.models import SFTPCredentials
 
 
-def _is_path_valid(path):
-    return isabs(path) and '../' not in path and path[-4:] == '.pdf'
+class PathTraversalException(Exception):
+    pass
 
 
-def _get_remote_path(username, filename):
-    return settings.SFTP_BASE_DIR + username + '/' + filename
+def _get_remote_path(username, filename, safe):
+    remote_path = settings.SFTP_BASE_DIR + username + '/' + filename
+    processed_path = relpath(remote_path, start=settings.SFTP_BASE_DIR)
+    if safe and processed_path != username + '/' + filename:
+        raise PathTraversalException
+    return remote_path
 
 
-def _get_pdf_bytes_from_sftp_server(remote_path, safe=True):
-    if safe and not _is_path_valid(remote_path):
-        return None
-
+def _get_pdf_bytes_from_sftp_server(remote_path):
     private_key = SFTPCredentials.objects.last().private_key_string
     private_key = StringIO(private_key)
     private_key = paramiko.RSAKey.from_private_key(private_key)
@@ -61,12 +62,15 @@ def _save_pdf_bytes_on_sftp_server(pdf_bytes, remote_path):
 
 def get_pdf_from_request(request, safe=True):
     filename = request.GET.get('filename', '')
-    remote_path = _get_remote_path(
-        username=request.user.username, filename=filename
-    )
-    pdf_bytes = _get_pdf_bytes_from_sftp_server(
-        remote_path=remote_path, safe=safe
-    )
+
+    try:
+        remote_path = _get_remote_path(
+            username=request.user.username, filename=filename, safe=safe
+        )
+    except PathTraversalException:
+        return filename, BytesIO()
+
+    pdf_bytes = _get_pdf_bytes_from_sftp_server(remote_path)
     return filename, BytesIO(pdf_bytes)
 
 
